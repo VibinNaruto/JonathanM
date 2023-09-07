@@ -1,0 +1,62 @@
+float $legA = 1;
+float $legB = 1;
+float $hair = 1;
+float $ball = 0.4;
+float $nose = 0.35;
+float $hand = 4;
+float $finger = -1.5;
+string $body = "robotBody";
+string $head = "robotHead";
+string $light = "balloflight";
+string $Red = "Flashing";
+
+
+polyCylinder -r $legA -h 2 -sx 20 -sy 1 -sz 1 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
+move -r -os -wd -1.0 $legA 0;
+scale 0.2 1 1;
+
+polyCylinder -r $legB -h 2 -sx 20 -sy 1 -sz 1 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
+move -r -os -wd 1.7 $legB 0;
+scale 0.2 1 1;
+
+polyCube -w 2 -h 4 -d 1 -name $body;
+move -r -os -wd 0.34 3 0;
+scale 2.0 1 3.4;
+
+polyCube -w 2 -h 4 -d 1 -name $head;
+move -r -os -wd 0.36 5.9 0;
+scale 0.8 0.7 2.6;
+
+polyCylinder -r $hair -h 2 -sx 20 -sy 1 -sz 1 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
+move -r -os -wd 0.3 7.5 0;
+scale 0.2 0.9 0.2;
+
+polyCube -w 2 -h 4 -d 1 -name $light;
+move -r -os -wd 0.29 8.7 0;
+scale (($ball + 0.8) - 0.4) 0.2 0.8;
+
+polyCube -w 2 -h 4 -d 1 -name $Red;
+move -r -os -wd $nose 6.3 1.4;
+scale 0.2 0.1 0.5;
+
+// Wanted to implement what we learned for last project 
+polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -tx 1 -ch 1;
+move -0.06 6.8 1.2;
+scale 0.24 0.24 0.24;
+// Wanted to implement what we learned for last project. Simple 
+polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -tx 1 -ch 1;
+move 0.7 6.8 1.2;
+scale 0.24 0.24 0.24;
+
+polyCylinder -r 0.2 -h ($hand - 1); 
+move 2.3 3.2 0;
+rotate 0 0 11.6;
+
+polyCylinder -r 0.2 -h ($hand - 1); 
+move ($finger + -0.2) 3.1 0;
+rotate 0 0 -13.6;
+
+
+
+
+
