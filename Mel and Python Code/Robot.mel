@@ -1,54 +1,54 @@
-// Create the snowman's body (bottom part)
-polySphere -r 4 -sx 20 -sy 20 -ax 0 1 0 -tx 1 -ch 1;
+//Snowman's body (Bottom part)
+polySphere -radius 4 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -texture 1 -ch 1;
 move 0 4 0;
 
-// Create the snowman's body (middle part)
-polySphere -r 3 -sx 20 -sy 20 -ax 0 1 0 -tx 1 -ch 1;
+//Snowman's body (Middle part)
+polySphere -radius 3 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -texture 1 -ch 1;
 move 0 8 0;
 
-// Create the snowman's body (top part, head)
-polySphere -r 2 -sx 20 -sy 20 -ax 0 1 0 -tx 1 -ch 1;
+//Snowman's body (Top part the head)
+polySphere -radius 2 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -texture 1 -ch 1;
 move 0 11 0;
 
-// Create the snowman's eyes (left)
-polySphere -r 0.2 -sx 20 -sy 20 -ax 0 1 0 -tx 1 -ch 1;
+//Snowman's eyes (Left)
+polySphere -radius 0.2 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -texture 1 -ch 1;
 move -0.7 11.5 1.7;
 
-// Create the snowman's eyes (right)
-polySphere -r 0.2 -sx 20 -sy 20 -ax 0 1 0 -tx 1 -ch 1;
+//Snowman's eyes (Right)
+polySphere -radius 0.2 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -texture 1 -ch 1;
 move 0.9 11.5 1.6;
 
-// Create the snowman's nose (carrot)
-polyCone -r 0.2 -h 1 -sx 20 -sy 1 -sz 1 -ax 0 1 0 -tx 1 -ch 1;
+//Snowman's nose (Carrot)
+polyCone -radius 0.2 -height 1 -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -texture 1 -ch 1;
 move 0.1 11.3 2.2;
 rotate -r -os 88 0 0;
 
-// Create the snowman's hat (brim)
-polyCylinder -r 3.5 -h 0.5 -sx 20 -sy 1 -sz 1 -ax 0 1 0 -tx 1 -ch 1;
+//Snowman's hat (Brim)
+polyCylinder -radius 3.5 -height 0.5 -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -texture 1 -ch 1;
 move 0 12.3 0;
 scale 0.7 0.7 0.7;
 
-// Create the snowman's hat (top)
-polyCylinder -r 1 -h 2 -sx 20 -sy 1 -sz 1 -ax 0 1 0 -tx 1 -ch 1;
+//Snowman's hat (Top)
+polyCylinder -radius 1 -height 2 -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -texture 1 -ch 1;
 move 0 14 0;
 scale 1.5 1.5 1.5;
 
-// Left Arm
-polyCylinder -r 1 -h 2 -sx 20 -sy 1 -sz 1 -ax 0 1 0 -tx 1 -ch 1;
+//Left Arm
+polyCylinder -radius 1 -height 2 -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -texture 1 -ch 1;
 move -2.9 8.7 0;
 rotate -r -os 0 0 314;
 scale 0.2 1.3 0.2;
 
-// Right Arm
-polyCylinder -r 1 -h 2 -sx 20 -sy 1 -sz 1 -ax 0 1 0 -tx 1 -ch 1;
+//Right Arm
+polyCylinder -radius 1 -height 2 -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -texture 1 -ch 1;
 move 2.8 9.0 0;
 rotate -r -os 0 0 45;
 scale 0.2 1.3 0.2;
 
-// Create the snowman's buttons
-polySphere -r 0.15 -sx 20 -sy 20 -ax 0 1 0 -tx 1 -ch 1;
+//Snowman's buttons
+polySphere -radius 0.15 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -texture 1 -ch 1;
 move 0.1 9.5 2.6;
-polySphere -r 0.15 -sx 20 -sy 20 -ax 0 1 0 -tx 1 -ch 1;
+polySphere -radius 0.15 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -texture 1 -ch 1;
 move 0.09 8.5 3.0;
-polySphere -r 0.15 -sx 20 -sy 20 -ax 0 1 0 -tx 1 -ch 1;
+polySphere -radius 0.15 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -texture 1 -ch 1;
 move 0.1 7.6 2.9;
