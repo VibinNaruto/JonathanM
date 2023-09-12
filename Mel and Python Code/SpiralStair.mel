@@ -6,8 +6,8 @@ proc generateSpiralStaircase(int $numSteps, float $length, float $height, float 
     {
         float $angle = $i * $rotation;
         float $x = $length * cos(deg_to_rad($angle));
-        float $y = $length * sin(deg_to_rad($angle));
-        float $z = $i * $height + $i * $stairOffset; 
+        float $y = $i * $height + $i * $stairOffset;
+        float $z = $length * sin(deg_to_rad($angle)); 
         
         string $step[] = `polyCube -w $width -h $height -d $depth`;
         move $x $y $z $step;
