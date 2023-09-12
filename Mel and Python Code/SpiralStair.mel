@@ -1,0 +1,17 @@
+proc generateSpiralStaircase(int $numSteps, float $length, float $height, float $width, float $depth, float $rotation, float $stairOffset) 
+{
+    string $staircase = "spiralstaircase";
+    
+    for ($i = 0; $i < $numSteps; $i++) 
+    {
+        float $angle = $i * $rotation;
+        float $x = $length * cos(deg_to_rad($angle));
+        float $y = $length * sin(deg_to_rad($angle));
+        float $z = $i * $height + $i * $stairOffset; 
+        
+        string $step[] = `polyCube -w $width -h $height -d $depth`;
+        move $x $y $z $step;
+    }
+}
+
+generateSpiralStaircase(20, 15, 3, -6, 4, 20, 2); 
