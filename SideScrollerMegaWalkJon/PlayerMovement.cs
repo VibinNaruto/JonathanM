@@ -7,22 +7,31 @@ public class PlayerMovement : MonoBehaviour
 public float speed;
 private float Move;
 
+public Animator thisAnim;
+
 public float jump;
 
 public bool isJumping;
 
-private Rigidbody2D rb;
+private Rigidbody rb;
+
+private void Awake()
+{
+    thisAnim = gameObject.GetComponent<Animator>();
+}
 
     // Start is called before the first frame update
    void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Move = Input.GetAxis("Horizontal");
+
+        thisAnim.SetBool("isRunning", Move!=0);
 
         rb.velocity = new Vector2(speed * Move, rb.velocity.y);
 
@@ -32,7 +41,7 @@ private Rigidbody2D rb;
             Debug.Log("jump");
         }
     }
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter(Collision other)
     {
       if(other.gameObject.CompareTag("Ground"))
       {
@@ -40,7 +49,7 @@ private Rigidbody2D rb;
       } 
     }
 
-    private void OnCollisionExit2D(Collision2D other)
+    private void OnCollisionExit(Collision other)
     {
         if(other.gameObject.CompareTag("Ground"))
         {
