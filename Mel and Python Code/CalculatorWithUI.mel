@@ -1,0 +1,221 @@
+global proc int addNumbers(int $a, int $b) 
+{
+    int $result = $a + $b;
+    return $result;
+}
+
+global proc string adding() 
+{
+    int $num1 = 7;
+    int $num2 = 10;
+    int $sum = addNumbers($num1, $num2);
+    
+    return ("The sum of " + $num1 + " and " + $num2 + " is: " + $sum);
+}
+
+global proc float subtractNumbers(float $a, float $b) 
+{
+    float $result = $a - $b;
+    return $result;
+}
+
+global proc string subtracting() 
+{
+    float $num1 = 20.0;  
+    float $num2 = 5.0;  
+    float $difference = subtractNumbers($num1, $num2);
+    
+    return ("The Difference Between " + $num1 + " and " + $num2 + " is: " + $difference);
+}
+
+global proc float multiplyNumbers(float $a, float $b) 
+{
+    float $result = $a * $b;
+    return $result;
+}
+
+global proc string multiply() 
+{
+    float $num1 = 7.0;  
+    float $num2 = 7.0;   
+    float $product = multiplyNumbers($num1, $num2);
+    
+    return ("The product of " + $num1 + " and " + $num2 + " is: " + $product);
+}
+
+global proc float divideNumbers(float $a, float $b) 
+{
+    if ($b == 0.0) 
+    {
+        error("Division by zero is not allowed.");
+        return 0.0;
+    }
+    
+    float $result = $a / $b;
+    return $result;
+}
+
+global proc string division() 
+{
+    float $num1 = 32.0;  
+    float $num2 = 8.0;   
+    float $quotient = divideNumbers($num1, $num2);
+    
+    return ("The quotient of " + $num1 + " divided by " + $num2 + " is: " + $quotient);
+}
+
+global proc float calculateMean(float $numbers[]) 
+{
+    int $count = size($numbers);
+    float $sum = 0.0;
+    
+    // Calculates the sum of all the numbers
+    for ($i = 0; $i < $count; $i++) 
+    {
+        $sum += $numbers[$i];
+    }
+    
+    // This should Caculate the mean
+    float $mean = divideNumbers($sum, $count);
+    return $mean;
+}
+
+global proc string meaning() 
+{
+    float $data[] = {10.0, 20.0, 30.0, 40.0, 50.0};  
+    
+    // calls the function to find mean
+    float $mean = calculateMean($data);
+    
+   
+    return ("The mean of the numbers is: " + $mean);
+}
+
+global proc float calculatePower(float $base, float $exponent) 
+{
+    float $result = pow($base, $exponent);
+    return $result;
+}
+
+global proc string powers() 
+{
+    float $base = 2.0; 
+    float $exponent = 3.0; 
+
+    // Calls the power function
+    float $powerResult = calculatePower($base, $exponent);
+    
+   
+   return ($base + " raised to the power of " + $exponent + " is: " + $powerResult);
+}
+
+global proc float calculateMedian(float $numbers[]) 
+{
+    // Sort the list of numbers using array
+    float $sortedNumbers[] = `sort $numbers`;
+
+    int $count = size($sortedNumbers);
+
+    if ($count == 0) 
+    {
+        error("The list of numbers is empty.");
+        return 0.0;
+    }
+
+    if ($count % 2 == 0) 
+    {
+        // If there is an even number of values, this will calculate the average of the middle two values
+        int $middle1 = ($count / 2) - 1;
+        int $middle2 = $count / 2;
+        float $median = ($sortedNumbers[$middle1] + $sortedNumbers[$middle2]) / 2.0;
+        return $median;
+    } else 
+    {
+        // This is for if odd number of values appear, then it will return to middle value
+        int $middle = ($count - 1) / 2;
+        float $median = $sortedNumbers[$middle];
+        return $median;
+    }
+}
+
+global proc string mediannn() 
+{
+    float $data[] = {10.0, 30.0, 20.0, 40.0, 50.0}; 
+    
+    // Calls the function to find median
+    float $median = calculateMedian($data);
+    
+   
+    return ("The median of the numbers is: " + $median);
+}
+
+
+global proc string calculator(int $operation)
+{
+    if ($operation == 1)
+    {
+        return (adding());
+    }
+    else if ($operation == 2)
+    {
+        return (subtracting());
+    }
+    else if ($operation == 3)
+    {
+        return (multiply());
+    }
+    else if ($operation == 4)
+    {
+       return (division());
+    }
+    else if ($operation == 5)
+    {
+       return (meaning());
+    }
+    else if ($operation == 6)
+    {
+       return (powers());
+    }
+    else if ($operation == 7)
+    {
+       return (mediannn());
+    }
+
+}
+
+// calculator(3);
+
+global proc CALC_ButtonCmd()
+{
+
+    string $operField = `optionVar -q "CalOperation"`;
+    string $resultField = `optionVar -q "CalCalcResult"`;
+    
+    string $oper = `radioButtonGrp -q -select $operField`;
+
+    string $result = calculator($oper);
+    textField -e -text $result $resultField;
+}
+
+global proc CalculatorUI()
+{
+    string $mWindow = "CalWindow";
+
+    if (`window -exists $mWindow`)
+    deleteUI $mWindow;
+
+    $window = `window -title "Calculator Screen" 
+                  -widthHeight 300 400
+                  -resizeToFitChildren 1
+                  $mWindow`;
+    string $mColumn = `columnLayout -parent $mWindow -adjustableColumn 1`;
+    
+    
+    optionVar -stringValue "CalOperation" `radioButtonGrp -parent $mColumn -numberOfRadioButtons 4 -labelArray4 "Adding" "Subtracting" "Multiply" "Division"`;
+    // optionVar -stringValue "ftOperation" `radioButtonGrp -parent $mColumn -numberOfRadioButtons 3 -labelArray3 "Meaning" "Power" "Median"`;
+    button -parent $mColumn -label "Calculate" -command "CALC_ButtonCmd";
+    optionVar -stringValue "CalCalcResult" `textField -parent $mColumn -editable 0`;
+    showWindow $mWindow;
+}
+
+CalculatorUI();

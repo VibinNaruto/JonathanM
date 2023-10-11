@@ -1,0 +1,76 @@
+global proc placementGenerator(float $xMin, float $xMax, float $yMin, float $yMax, float $zMin, float $zMax, int $numdups)
+{
+    // Store object(s) name as variable
+    string $sels[] = `ls -selection`;
+
+    // Loop through each object selection
+    for ($i = 0; $i < size($sels); $i++)
+    {
+        // Perform actions for each individual object
+        for ($j = 0; $j < $numdups; $j++)
+        {
+            // Duplicate current object
+            string $dups[] = `duplicate -rr $sels[$i]`;
+            string $dup = $dups[0];
+
+            // Generate new x, y, and z values based on range arguments
+            float $randX = `rand $xMin $xMax`;
+            float $randY = `rand $yMin $yMax`;
+            float $randZ = `rand $zMin $zMax`;
+
+            // Translate current object to the new position
+            xform -worldSpace -translation $randX $randY $randZ $dup;
+        }
+    }
+}
+
+global proc Generator(int $operation)
+{
+    if ($operation == 1)
+    {
+        placementGenerator(-10, 30, -5, 20, -100, 100, 50);
+      
+    }
+}
+
+global proc RG_ButtonCmd()
+{
+    string $operField = `optionVar -q "RGOperation"`;
+    string $resultField = `optionVar -q "RGRandomResult"`;
+    
+    string $oper = `radioButtonGrp -q -select $operField`;
+
+    string $result = Generator($oper);
+    textField -e -text $result $resultField;
+}
+
+global proc RandomGeneratorUI()
+{
+    string $mWindow = "RGWindow";
+
+    if (`window -exists $mWindow`)
+    deleteUI $mWindow;
+
+    $window = `window -title "Random Generator Screen" 
+                  -widthHeight 300 400
+                  -resizeToFitChildren 1
+                  $mWindow`;
+    string $mColumn = `columnLayout -parent $mWindow -adjustableColumn 1`;
+    
+    optionVar -stringValue "RGxMin" `textField -parent $mColumn -placeholderText "Enter xMin here..."`;
+    optionVar -stringValue "RGxMax" `textField -parent $mColumn -placeholderText "Enter xMax here..."`;
+    optionVar -stringValue "RGyMin" `textField -parent $mColumn -placeholderText "Enter yMin here..."`;
+    optionVar -stringValue "RGyMax" `textField -parent $mColumn -placeholderText "Enter yMax here..."`;
+    optionVar -stringValue "RGzMin" `textField -parent $mColumn -placeholderText "Enter zMin here..."`;
+    optionVar -stringValue "RGxzMax" `textField -parent $mColumn -placeholderText "Enter zMax here..."`;
+    optionVar -stringValue "RGnumDups"`textField -parent $mColumn -placeholderText "Enter NumDups here..."`;
+
+    button -parent $mColumn -label "Randomize" -command "RG_ButtonCmd";
+    showWindow $mWindow;
+    
+}
+
+    RandomGeneratorUI();
+
+
+// placementGenerator(-10, 30, -5, 20, -100, 100, 50);
