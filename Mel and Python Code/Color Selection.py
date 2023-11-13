@@ -9,7 +9,8 @@ def change_override_color(selected_objects, color_index):
         shapes = cmds.listRelatives(obj, shapes=True, fullPath=True) or []
         for shape in shapes:
             cmds.setAttr(shape + ".overrideColor", color_index)
+            cmds.setAttr(f"{shape}.overrideEnabled", 1)
 
 selected_objects = cmds.ls(selection=True, long=True)
-color_index = 13
+color_index = 21
 change_override_color(selected_objects, color_index)
