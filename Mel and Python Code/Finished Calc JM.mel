@@ -184,3 +184,15 @@ global proc calculator(int $operation)
 }
 
 calculator(3);
+
+
+// optionVar -stringValue "ftNumberField" `textfield -parent $mColumn -placeholderText "Enter Number here..."`;
+
+    //string $numberfield = `optionVar -q "ftNumberField"`;
+    //string $othernumberfield = `optionVar -q "ftOtherNumberField"`;
+    //string $operField = `optionVar -q "ftOperation"`;
+    
+    //string $number = `textField -q -text $numberfield`;
+    //string $othernumber = `intField -q value $othernumberfield`;
+    //string $oper = `radioButtonGrp -q -select $operField`;
+ 
