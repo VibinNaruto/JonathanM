@@ -54,14 +54,11 @@ class RandomGeneratorUI():
         self.show()
 
     def update_num_fields(self):
-        # Call the placement_generator function with the desired arguments
         placement_generator(-10, 30, -5, 20, -100, 100, 50)
 
-        # Optionally, you can add code here to update the UI based on the calculation
 
     def show(self):
         cmds.showWindow(RandomGeneratorUI.window_name)
 
-# Create and show the UI
 myTest = RandomGeneratorUI()
 myTest.create()

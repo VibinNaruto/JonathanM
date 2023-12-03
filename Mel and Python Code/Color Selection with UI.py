@@ -65,12 +65,11 @@ class ColorSelectionUI():
 
     def calculate_and_change_color(self):
         selected_objects = cmds.ls(selection=True, long=True)
-        color_index = cmds.intSliderGrp(self.color_slider, q=True, value=True)  # Get color from the slider
+        color_index = cmds.intSliderGrp(self.color_slider, q=True, value=True)  # Gets the Color for slider
         change_override_color(selected_objects, color_index)
 
     def show(self):
         cmds.showWindow(ColorSelectionUI.window_name)
 
-# Example usage:
 colorSelection_ui = ColorSelectionUI()
 colorSelection_ui.create()
