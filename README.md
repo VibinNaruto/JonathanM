@@ -9,3 +9,5 @@ but not bad overall.
 During the modeling process, I chose to kinda follow a rigging/modeling process. I started by creating the skeleton during joints and adding points to it. I did add some detail but I didn't want to 
 overdo it. I did try to work on parenting and it sorta of worked but at some points it did not want to follow also I need to work on my pivot points which I felt that I changed pretty well. Overall the
 creative process is to add more detail later but understand what I'm trying to learn first before I get into the nitty gritty.
+
+Adding some final details to the robot arm I felt that it came out pretty good. Overall I did add some bevels, batteries, and other details to the robot. Some challenges that I came across were mainly the clean up there are a few 2 parts towards the front that I tried to fix the lines but it did not work. But it's not a huge issue. 
