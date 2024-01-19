@@ -11,3 +11,7 @@ overdo it. I did try to work on parenting and it sorta of worked but at some poi
 creative process is to add more detail later but understand what I'm trying to learn first before I get into the nitty gritty.
 
 Adding some final details to the robot arm I felt that it came out pretty good. Overall I did add some bevels, batteries, and other details to the robot. Some challenges that I came across were mainly the clean up there are a few 2 parts towards the front that I tried to fix the lines but it did not work. But it's not a huge issue. 
+
+With the final steps of the robot arm, I decided to go with an Iron Man-themed arm with the core on top and gold and red accents to it. I really did enjoy the UV's process and seeing the final process of the arm in 
+general. I did run into a problem with Sketchfab that I will ask in class but after some digging in it might have to do with the joints and rig in general that might have constraints and it won't let me export it 
+from Maya. But overall really fun!
